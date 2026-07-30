@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MobiLab | Catálogo</title>
+
+    <style>
+        /* ==============================
+           CONFIGURACIÓN GENERAL
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: white;
+        }
+
+        :root {
+            --dorado: #c9a227;
+            --dorado-claro: #e4c45c;
+            --negro: #080808;
+            --gris: #151515;
+            --gris-claro: #222;
+            --blanco: #f5f5f5;
+        }
+
+        /* ==============================
+           BARRA DE NAVEGACIÓN
+        ============================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 75px;
+            background: rgba(5, 5, 5, 0.95);
+            border-bottom: 1px solid #3b2d0d;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: var(--dorado);
+            font-family: Georgia, serif;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            display: block;
+            font-family: Arial, sans-serif;
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-top: -5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--dorado-claro);
+        }
+
+        .btn-nav {
+            border: 1px solid var(--dorado);
+            padding: 12px 20px;
+            color: var(--dorado-claro) !important;
+        }
+
+        /* ==============================
+           PORTADA
+        ============================== */
+
+        .hero {
+            min-height: 700px;
+            padding: 130px 7% 80px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(8,8,8,0.85) 25%,
+                    rgba(8,8,8,0.35) 45%,
+                    rgba(8,8,8,0.05)
+                ),
+                url("LOGO.png");
+
+            background-size: 60%;
+            background-position: right center;
+            background-repeat: no-repeat;
+
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--dorado);
+        }
+
+        .hero p {
+            color: #ddd;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid var(--dorado);
+            color: var(--dorado-claro);
+            padding: 14px 25px;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--dorado);
+            color: black;
+        }
+
+        /* ==============================
+           VENTAJAS
+        ============================== */
+
+        .advantages {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: #111;
+            border-top: 1px solid #3b2d0d;
+            border-bottom: 1px solid #3b2d0d;
+        }
+
+        .advantage {
+            padding: 30px;
+            text-align: center;
+            border-right: 1px solid #333;
+        }
+
+        .advantage .icon {
+            font-size: 30px;
+            color: var(--dorado);
+            margin-bottom: 10px;
+        }
+
+        .advantage h3 {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .advantage p {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* ==============================
+           CATÁLOGO
+        ============================== */
+
+        .catalogo {
+            padding: 80px 5%;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .titulo-seccion h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .titulo-seccion p {
+            color: #aaa;
+        }
+
+        /* Buscador */
+
+        .buscador {
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .buscador input {
+            width: 100%;
+            padding: 16px 20px;
+            background: #151515;
+            border: 1px solid #444;
+            color: white;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .buscador input:focus {
+            border-color: var(--dorado);
+        }
+
+        /* Categorías */
+
+        .categorias {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .categoria {
+            padding: 10px 18px;
+            background: #151515;
+            border: 1px solid #444;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .categoria:hover,
+        .categoria.activa {
+            background: var(--dorado);
+            color: black;
+        }
+
+        /* Productos */
+
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .producto {
+            background: #121212;
+            border: 1px solid #292929;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .producto:hover {
+            transform: translateY(-8px);
+            border-color: var(--dorado);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.15);
+        }
+
+        .producto img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .producto-info {
+            padding: 20px;
+        }
+
+        .producto h3 {
+            color: var(--dorado-claro);
+            margin-bottom: 10px;
+        }
+
+        .producto p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 65px;
+        }
+
+        .precio {
+            color: white;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 8px;
+        }
+
+        .acciones button {
+            flex: 1;
+            padding: 10px;
+            background: transparent;
+            color: var(--dorado-claro);
+            border: 1px solid var(--dorado);
+            cursor: pointer;
+        }
+
+        .acciones button:hover {
+            background: var(--dorado);
+            color: black;
+        }
+
+        /* ==============================
+           LLAMADO A LA ACCIÓN
+        ============================== */
+
+        .cta {
+            margin: 40px 5%;
+            padding: 60px;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,.9),
+                    rgba(0,0,0,.6)
+                ),
+                url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #4b3a13;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        /* ==============================
+           POR QUÉ ELEGIRNOS
+        ============================== */
+
+        .nosotros {
+            padding: 80px 7%;
+            background: #101010;
+            text-align: center;
+        }
+
+        .nosotros-contenido {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .nosotros h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .nosotros p {
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .beneficios {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .beneficio {
+            padding: 30px 20px;
+            background: #171717;
+            border: 1px solid #292929;
+        }
+
+        .beneficio span {
+            font-size: 35px;
+            color: var(--dorado);
+        }
+
+        .beneficio h3 {
+            margin: 15px 0 10px;
+        }
+
+        .beneficio p {
+            font-size: 13px;
+            margin: 0;
+        }
+
+        /* ==============================
+           CONTACTO
+        ============================== */
+
+        .contacto {
+            padding: 80px 7%;
+            text-align: center;
+        }
+
+        .contacto h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .contacto > p {
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .contacto-card {
+            padding: 30px;
+            background: #151515;
+            border: 1px solid #292929;
+        }
+
+        .contacto-card span {
+            font-size: 30px;
+            color: var(--dorado);
+        }
+
+        .contacto-card h3 {
+            margin: 15px 0 10px;
+        }
+
+        .contacto-card p {
+            color: #aaa;
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            background: #050505;
+            border-top: 1px solid #3b2d0d;
+            padding: 50px 7% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        footer h2 {
+            color: var(--dorado);
+            font-family: Georgia, serif;
+            font-size: 40px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+            color: var(--dorado-claro);
+        }
+
+        footer p,
+        footer a {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.8;
+            text-decoration: none;
+        }
+
+        .copyright {
+            border-top: 1px solid #292929;
+            padding-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* ==============================
+           MODAL
+        ============================== */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.85);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-contenido {
+            background: #151515;
+            border: 1px solid var(--dorado);
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .cerrar {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 25px;
+            color: var(--dorado);
+            cursor: pointer;
+        }
+
+        .modal-contenido h2 {
+            color: var(--dorado);
+            margin-bottom: 20px;
+        }
+
+        .modal-contenido input,
+        .modal-contenido textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: #222;
+            border: 1px solid #444;
+            color: white;
+        }
+
+        .modal-contenido textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        /* ==============================
+           ESTILOS CARRITO DE COMPRAS Y WHATSAPP
+        ============================== */
+
+        /* Botón de Carrito Flotante */
+        .cart-icon-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--dorado);
+            color: black;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            cursor: pointer;
+            z-index: 2000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: none;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Botón Flotante de WhatsApp Directo */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 2000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-decoration: none;
+        }
+
+        /* Sidebar del Carrito */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100%;
+            background: #111;
+            border-left: 1px solid var(--dorado);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.8);
+            z-index: 3000;
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .cart-header h2 {
+            color: var(--dorado);
+            font-size: 22px;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1a1a1a;
+            padding: 12px;
+            border: 1px solid #333;
+        }
+
+        .cart-item-details h4 {
+            font-size: 14px;
+            color: var(--dorado-claro);
+            margin-bottom: 5px;
+        }
+
+        .cart-item-details p {
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .btn-qty {
+            background: #333;
+            color: white;
+            border: none;
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-qty:hover {
+            background: var(--dorado);
+            color: black;
+        }
+
+        .cart-footer {
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .cart-total span:last-child {
+            color: var(--dorado-claro);
+        }
+
+        .btn-whatsapp-buy {
+            width: 100%;
+            padding: 14px;
+            background: #25d366;
+            color: white;
+            border: none;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-whatsapp-buy:hover {
+            background: #1ebc57;
+        }
+
+        /* Overlay */
+        .cart-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2500;
+        }
+
+        .cart-overlay.open {
+            display: block;
+        }
+
+        /* ==============================
+           RESPONSIVE
+        ============================== */
+
+        @media (max-width: 1000px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .productos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .advantages,
+            .beneficios {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero {
+                min-height: 650px;
+            }
+
+            .productos,
+            .advantages,
+            .beneficios,
+            .contacto-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta {
+                padding: 40px 20px;
+            }
+
+            .catalogo {
+                padding: 60px 5%;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        MobiLab
+        <span>ARCHITECTURE-EDUCATION-INNOVATION</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">INICIO</a></li>
+            <li><a href="#catalogo">CATÁLOGO</a></li>
+            <li><a href="#nosotros">NOSOTROS</a></li>
+            <li><a href="#contacto">CONTACTO</a></li>
+            <li>
+                <a href="#cotizacion" class="btn-nav">
+                    COTIZAR AHORA
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</header>
+
+
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <h1>
+            EQUIPA TU ÉXITO,
+            <span>DISEÑA TU FUTURO</span>
+        </h1>
+
+        <p>
+            Descubre muebles exclusivos que combinan diseño
+            ergonómico, funcionalidad y la mas alta calidad
+            para tranformar cada espacio en tu lugar ideal.
+        </p>
+
+        <a href="#catalogo" class="btn">
+            EXPLORAR CATÁLOGO →
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="advantages">
+
+    <div class="advantage">
+        <div class="icon">✦</div>
+        <h3>DISEÑOS UNICOS</h3>
+        <p>Adaptados a tus necesidades y estilo.</p>
+    </div>
+
+    <div class="advantage">
+        <div class="icon">◇</div>
+        <h3>CALIDAD GARANTIZADA</h3>
+        <p>Compromiso con cada detalle.</p>
+    </div>
+
+    <div class="advantage">
+        <div class="icon">♧</div>
+        <h3>ATENCIÓN PERSONALIZADA</h3>
+        <p>Te acompañamos durante tu elección.</p>
+    </div>
+
+    <div class="advantage">
+        <div class="icon">☆</div>
+        <h3>PROFESIONALISMO</h3>
+        <p>Creatividad y excelencia en cada producto.</p>
+    </div>
+
+</section>
+
+
+<section class="catalogo" id="catalogo">
+
+    <div class="titulo-seccion">
+
+        <h2>NUESTRO CATÁLOGO</h2>
+
+        <p>
+            Explora nuestra colección y transforma
+            tus ambientes con un estilo único.
+        </p>
+
+    </div>
+
+
+    <div class="buscador">
+
+        <input
+            type="text"
+            id="busqueda"
+            placeholder="🔍 Buscar servicios..."
+            onkeyup="buscarProducto()"
+        >
+
+    </div>
+
+
+    <div class="categorias">
+
+        <button class="categoria activa"
+        onclick="filtrar('todos', this)">
+            Todos
+        </button>
+
+        <button class="categoria"
+        onclick="filtrar('escritorios', this)">
+            Escritorios
+        </button>
+
+        <button class="categoria"
+        onclick="filtrar('separadores', this)">
+            Escritorios Panel Separador
+        </button>
+
+        <button class="categoria"
+        onclick="filtrar('ruedas', this)">
+            Escritorios con Ruedas
+        </button>
+
+        <button class="categoria"
+        onclick="filtrar('oficina', this)">
+            Sillas
+        </button>
+
+        <button class="categoria"
+        onclick="filtrar('gamer', this)">
+            Sillas Gamers
+        </button>
+
+    </div>
+
+
+    <div class="productos">
+
+
+        <div class="producto" data-categoria="escritorios">
+
+            <img src="imagen1.jpg">
+
+            <div class="producto-info">
+
+                <h3>Escritorio Ejecutivo Minimalista</h3>
+
+                <p>
+                    Escritorio moderno y elegante, ideal para espacios de
+                    trabajo profesionales y organizados.
+                </p>
+
+                <div class="precio">
+                    Desde L 10,000
+                </div>
+
+                <div class="acciones">
+
+                    <button onclick="agregarAlCarrito('Escritorio Ejecutivo Minimalista', 10000)">
+                        Añadir al carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="escritorios">
+
+            <img src="imagen18.jpg">
+
+            <div class="producto-info">
+
+                <h3>Escritorio Modular con Almacenamiento</h3>
+
+                <p>
+                    Diseño práctico con espacios integrados para
+                    organizar libros, documentos y accesorios.
+                </p>
+
+                <div class="precio">
+                    Desde L 12,000
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Escritorio Modular con Almacenamiento', 12000)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="escritorios">
+
+            <img src="imagen19.jpg">
+
+            <div class="producto-info">
+
+                <h3>Escritorio Gamer Pro</h3>
+
+                <p>
+                    Estacion de juego moderna con amplio
+                    espacio para monitor, accesorios y equipo gamer.
+                </p>
+
+                <div class="precio">
+                    Desde L 14,000
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Escritorio Gamer Pro', 14000)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="separadores">
+
+            <img src="imagen3.jpg">
+
+            <div class="producto-info">
+
+                <h3>Estación de Trabajo con Separadores</h3>
+
+                <p>
+                    Espacio de trabajo compartido con separadores que brindan
+                    privacidad y permiten organizar varios puestos de
+                    manera cómoda y funcional.
+                </p>
+
+                <div class="precio">
+                    Desde L 12,000
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Estación de Trabajo con Separadores', 12000)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="separadores">
+
+            <img src="imagen4.jpg">
+
+            <div class="producto-info">
+
+                <h3>Estación de Trabajo Modular</h3>
+
+                <p>
+                    Puestos de trabajos organizados que aprovechan
+                    el espacio y favorecen la productividad.
+                </p>
+
+                <div class="precio">
+                    Desde L 10,000
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Estación de Trabajo Modular', 10000)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="ruedas">
+
+            <img src="imagen15.jpg">
+
+            <div class="producto-info">
+
+                <h3>Escritorios Móvil con Ruedas</h3>
+
+                <p>
+                    Diseño práctico y versátil que permiten mover fácilmente
+                    el escritorio para adaptarlo a diferentes espacios de trabajo.
+                </p>
+
+                <div class="precio">
+                    Desde L 10,500
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Escritorios Móvil con Ruedas', 10500)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="ruedas">
+
+            <img src="imagen17.jpg">
+
+            <div class="producto-info">
+
+                <h3>Escritorio Ejecutivo Móvil con Cajonera</h3>
+
+                <p>
+                    Escritorio elegante y funcional con cajonera integrada y 
+                    ruedas para facilitar su movilidad y organización.
+                </p>
+
+                <div class="precio">
+                    Desde L 12,000
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Escritorio Ejecutivo Móvil con Cajonera', 12000)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="oficina">
+
+            <img src="imagen8.jpg">
+
+            <div class="producto-info">
+
+                <h3>Silla Ejecutiva Ergonómica</h3>
+
+                <p>
+                    Silla cómoda y sostificada diseñada para brindar
+                    soporte durantelargas jornadas de trabajo.
+                </p>
+
+                <div class="precio">
+                    Desde L 3,000
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Silla Ejecutiva Ergonómica', 3000)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="oficina">
+
+            <img src="imagen14.jpg">
+
+            <div class="producto-info">
+
+                <h3>Silla de Oficina Moderna</h3>
+
+                <p>
+                    Silla de oficina moderna y confortable, ideal para trabajar
+                    con comodidad y mantener una postura adecuada
+                    durante la jornada laboral.
+                </p>
+
+                <div class="precio">
+                    Desde L 4,000
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Silla de Oficina Moderna', 4000)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="oficina">
+
+            <img src="imagen13.png">
+
+            <div class="producto-info">
+
+                <h3>Silla Ejecutiva Premium</h3>
+
+                <p>
+                    Silla ergonómica y elegante diseñada para brindar comodidad
+                    y estilo durante la jornada laboral.
+                </p>
+
+                <div class="precio">
+                    Desde L 5,000
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Silla Ejecutiva Premium', 5000)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="gamer">
+
+            <img src="imagen10.jpg">
+
+            <div class="producto-info">
+
+                <h3>Silla Gamer Profesional</h3>
+
+                <p>
+                    Silla gamer de diseño deportivo y moderno, ideal para
+                    disfrutar largas sesiones de juego con comodida y soporte.
+                </p>
+
+                <div class="precio">
+                    Desde L 5,000
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Silla Gamer Profesional', 5000)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="gamer">
+
+            <img src="imagen11.jpg">
+
+            <div class="producto-info">
+
+                <h3>Silla Gamer Ergonómica</h3>
+
+                <p>
+                    Silla gamer cómoda y resistente, diseñada para brindar un excelente
+                    soporte durante largas horas de juego o entretenimiento.
+                </p>
+
+                <div class="precio">
+                    Desde L 6,000
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Silla Gamer Ergonómica', 6000)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="producto" data-categoria="gamer">
+
+            <img src="imagen12.png">
+
+            <div class="producto-info">
+
+                <h3>Silla Gamer Confort</h3>
+
+                <p>
+                    Silla gamer con diseño moderno y confortable, perfecta
+                    para crear un espacio de juego cómodo y atractivo.
+                </p>
+
+                <div class="precio">
+                    Desde L 7,000
+                </div>
+
+                <div class="acciones">
+                    <button onclick="agregarAlCarrito('Silla Gamer Confort', 7000)">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<section class="cta" id="cotizacion">
+
+    <h2>¿TIENES UN PROYECTO EN MENTE?</h2>
+
+    <p>
+        Cuéntanos tu idea y trabajemos juntos
+        para convertirla en realidad.
+    </p>
+
+    <button class="btn" onclick="abrirModal('Solicitud de cotización')">
+        SOLICITAR COTIZACIÓN →
+    </button>
+
+</section>
+
+
+<section class="nosotros" id="nosotros">
+
+    <div class="nosotros-contenido">
+
+        <h2>¿POR QUÉ ELEGIRNOS?</h2>
+
+        <p>
+            En SV Architecture Studio transformamos
+            ideas en espacios extraordinarios.
+            Nuestro compromiso es crear proyectos
+            que combinen estética, funcionalidad
+            y calidad, acompañando a nuestros clientes
+            durante cada etapa del proceso.
+        </p>
+
+        <div class="beneficios">
+
+            <div class="beneficio">
+                <span>✦</span>
+                <h3>Creatividad</h3>
+                <p>
+                    Diseños únicos adaptados
+                    a cada cliente.
+                </p>
+            </div>
+
+            <div class="beneficio">
+                <span>◇</span>
+                <h3>Calidad</h3>
+                <p>
+                    Cuidamos cada detalle
+                    de nuestros proyectos.
+                </p>
+            </div>
+
+            <div class="beneficio">
+                <span>♧</span>
+                <h3>Compromiso</h3>
+                <p>
+                    Trabajamos de la mano
+                    con nuestros clientes.
+                </p>
+            </div>
+
+            <div class="beneficio">
+                <span>☆</span>
+                <h3>Innovación</h3>
+                <p>
+                    Buscamos nuevas formas
+                    de transformar espacios.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="contacto" id="contacto">
+
+    <h2>HABLEMOS DE TU PROYECTO</h2>
+
+    <p>
+        Estamos listos para escuchar tus ideas.
+    </p>
+
+    <div class="contacto-grid">
+
+        <div class="contacto-card">
+            <span>☎</span>
+            <h3>Teléfono</h3>
+            <p>+504 0000-0000</p>
+        </div>
+
+        <div class="contacto-card">
+            <span>✉</span>
+            <h3>Correo</h3>
+            <p>info@svarchitecture.com</p>
+        </div>
+
+        <div class="contacto-card">
+            <span>⌖</span>
+            <h3>Ubicación</h3>
+            <p>San Pedro Sula, Honduras</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h2>SV</h2>
+
+            <p>
+                ARCHITECTURE STUDIO
+            </p>
+
+            <p>
+                Imaginamos espacios,
+                Creamos Realidades.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>ENLACES</h3>
+
+            <p><a href="#inicio">Inicio</a></p>
+            <p><a href="#catalogo">Catálogo</a></p>
+            <p><a href="#nosotros">Nosotros</a></p>
+            <p><a href="#contacto">Contacto</a></p>
+
+        </div>
+
+        <div>
+
+            <h3>CONTACTO</h3>
+
+            <p>☎ +504 0000-0000</p>
+            <p>✉ info@svarchitecture.com</p>
+            <p>⌖ San Pedro Sula, Honduras</p>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+
+        © 2026 SV Architecture Studio.
+        Todos los derechos reservados.
+
+    </div>
+
+</footer>
+
+
+<div class="modal" id="modal">
+
+    <div class="modal-contenido">
+
+        <span class="cerrar" onclick="cerrarModal()">×</span>
+
+        <h2>Solicitar información</h2>
+
+        <p id="servicioSeleccionado"></p>
+
+        <br>
+
+        <input
+            type="text"
+            placeholder="Tu nombre"
+        >
+
+        <input
+            type="email"
+            placeholder="Tu correo electrónico"
+        >
+
+        <input
+            type="tel"
+            placeholder="Tu número de teléfono"
+        >
+
+        <textarea
+            placeholder="Cuéntanos sobre tu proyecto..."
+        ></textarea>
+
+        <button class="btn">
+            ENVIAR SOLICITUD
+        </button>
+
+    </div>
+
+</div>
+
+
+<button class="cart-icon-btn" onclick="toggleCarrito()">
+    🛒
+    <span class="cart-count" id="cartCount">0</span>
+</button>
+
+<a href="https://wa.me/50400000000?text=Hola,%20deseo%20obtener%20más%20información." class="whatsapp-btn" target="_blank" title="Contactar por WhatsApp">
+    💬
+</a>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCarrito()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+        <h2>TU CARRITO</h2>
+        <span class="cerrar" onclick="toggleCarrito()">×</span>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+        </div>
+
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">L 0.00</span>
+        </div>
+
+        <button class="btn-whatsapp-buy" onclick="finalizarCompraWhatsApp()">
+            FINALIZAR COMPRA POR WHATSAPP
+        </button>
+    </div>
+</div>
+
+
+<script>
+
+    /* ==========================
+       BUSCADOR
+    ========================== */
+
+    function buscarProducto() {
+
+        let texto =
+            document
+            .getElementById("busqueda")
+            .value
+            .toLowerCase();
+
+        let productos =
+            document.querySelectorAll(".producto");
+
+        productos.forEach(function(producto) {
+
+            let contenido =
+                producto.innerText.toLowerCase();
+
+            if (contenido.includes(texto)) {
+
+                producto.style.display = "block";
+
+            } else {
+
+                producto.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* ==========================
+       FILTRO DE CATEGORÍAS
+    ========================== */
+
+    function filtrar(categoria, boton) {
+
+        let productos =
+            document.querySelectorAll(".producto");
+
+        let botones =
+            document.querySelectorAll(".categoria");
+
+        botones.forEach(function(b) {
+
+            b.classList.remove("activa");
+
+        });
+
+        boton.classList.add("activa");
+
+        productos.forEach(function(producto) {
+
+            if (
+                categoria === "todos" ||
+                producto.dataset.categoria === categoria
+            ) {
+
+                producto.style.display = "block";
+
+            } else {
+
+                producto.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* ==========================
+       ABRIR MODAL
+    ========================== */
+
+    function abrirModal(servicio) {
+
+        document
+        .getElementById("servicioSeleccionado")
+        .innerText =
+        "Servicio seleccionado: " + servicio;
+
+        document
+        .getElementById("modal")
+        .style.display = "flex";
+
+    }
+
+
+    /* ==========================
+       CERRAR MODAL
+    ========================== */
+
+    function cerrarModal() {
+
+        document
+        .getElementById("modal")
+        .style.display = "none";
+
+    }
+
+
+    /* Cerrar al hacer clic fuera */
+
+    window.onclick = function(event) {
+
+        let modal =
+            document.getElementById("modal");
+
+        if (event.target === modal) {
+
+            modal.style.display = "none";
+
+        }
+
+    }
+
+
+    /* ==========================
+       LÓGICA DEL CARRITO DE COMPRAS
+    ========================== */
+
+    let carrito = [];
+
+    function toggleCarrito() {
+        document.getElementById("cartSidebar").classList.toggle("open");
+        document.getElementById("cartOverlay").classList.toggle("open");
+    }
+
+    function agregarAlCarrito(nombre, precio) {
+        let existe = carrito.find(p => p.nombre === nombre);
+
+        if (existe) {
+            existe.cantidad++;
+        } else {
+            carrito.push({ nombre: nombre, precio: precio, cantidad: 1 });
+        }
+
+        actualizarCarritoUI();
+        
+        // Abre el carrito para confirmarle al usuario
+        document.getElementById("cartSidebar").classList.add("open");
+        document.getElementById("cartOverlay").classList.add("open");
+    }
+
+    function cambiarCantidad(index, delta) {
+        carrito[index].cantidad += delta;
+        if (carrito[index].cantidad <= 0) {
+            carrito.splice(index, 1);
+        }
+        actualizarCarritoUI();
+    }
+
+    function actualizarCarritoUI() {
+        let cartItemsContainer = document.getElementById("cartItems");
+        cartItemsContainer.innerHTML = "";
+
+        let total = 0;
+        let totalCount = 0;
+
+        if (carrito.length === 0) {
+            cartItemsContainer.innerHTML = "<p style='color: #aaa; text-align: center; margin-top: 30px;'>El carrito está vacío.</p>";
+        } else {
+            carrito.forEach((item, index) => {
+                let subtotal = item.precio * item.cantidad;
+                total += subtotal;
+                totalCount += item.cantidad;
+
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <h4>${item.nombre}</h4>
+                            <p>L ${item.precio.toLocaleString()} x ${item.cantidad}</p>
+                            <p><strong>Subtotal: L ${subtotal.toLocaleString()}</strong></p>
+                            <div class="cart-item-controls">
+                                <button class="btn-qty" onclick="cambiarCantidad(${index}, -1)">-</button>
+                                <span>${item.cantidad}</span>
+                                <button class="btn-qty" onclick="cambiarCantidad(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        document.getElementById("cartTotal").innerText = `L ${total.toLocaleString()}`;
+        document.getElementById("cartCount").innerText = totalCount;
+    }
+
+    function finalizarCompraWhatsApp() {
+        if (carrito.length === 0) {
+            alert("Tu carrito está vacío.");
+            return;
+        }
+
+        let numeroTelefono = "50400000000"; // Reemplazar por el número real
+        let mensaje = "¡Hola! Quisiera solicitar el pedido de los siguientes productos:\n\n";
+
+        let total = 0;
+        carrito.forEach((item) => {
+            let subtotal = item.precio * item.cantidad;
+            total += subtotal;
+            mensaje += `• ${item.nombre} (x${item.cantidad}) - L ${subtotal.toLocaleString()}\n`;
+        });
+
+        mensaje += `\n*Total a Pagar:* L ${total.toLocaleString()}\n\n¿Me podrías indicar los pasos para completar la compra?`;
+
+        let url = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`;
+        window.open(url, "_blank");
+    }
+
+</script>
+
+</body>
+</html>
