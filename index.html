@@ -19,7 +19,8 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: serif;
+            font-style: italic;
             background: #080808;
             color: white;
         }
@@ -27,6 +28,8 @@
         :root {
             --dorado: #c9a227;
             --dorado-claro: #e4c45c;
+            --verde-esmeralda: #ffffff;
+            --verde-claro: #ffffff;
             --negro: #080808;
             --gris: #151515;
             --gris-claro: #222;
@@ -54,14 +57,16 @@
 
         .logo {
             color: var(--dorado);
-            font-family: Georgia, serif;
+            font-family: serif;
+            font-style: italic;
             font-size: 35px;
             font-weight: bold;
         }
 
         .logo span {
             display: block;
-            font-family: Arial, sans-serif;
+            font-family: serif;
+            font-style: italic;
             font-size: 8px;
             letter-spacing: 2px;
             text-align: center;
@@ -82,13 +87,7 @@
         }
 
         nav a:hover {
-            color: var(--dorado-claro);
-        }
-
-        .btn-nav {
-            border: 1px solid var(--dorado);
-            padding: 12px 20px;
-            color: var(--dorado-claro) !important;
+            color: var(--verde-claro);
         }
 
         /* ==============================
@@ -112,7 +111,6 @@
             background-size: 60%;
             background-position: right center;
             background-repeat: no-repeat;
-
         }
 
         .hero-content {
@@ -148,8 +146,9 @@
         }
 
         .btn:hover {
-            background: var(--dorado);
-            color: black;
+            background: var(--verde-esmeralda);
+            border-color: var(--verde-claro);
+            color: #000;
         }
 
         /* ==============================
@@ -172,7 +171,7 @@
 
         .advantage .icon {
             font-size: 30px;
-            color: var(--dorado);
+            color: var(--verde-claro);
             margin-bottom: 10px;
         }
 
@@ -223,10 +222,13 @@
             color: white;
             outline: none;
             font-size: 15px;
+            transition: 0.3s;
+            font-family: inherit;
+            font-style: inherit;
         }
 
         .buscador input:focus {
-            border-color: var(--dorado);
+            border-color: var(--verde-claro);
         }
 
         /* Categorías */
@@ -246,12 +248,15 @@
             color: white;
             cursor: pointer;
             transition: 0.3s;
+            font-family: inherit;
+            font-style: inherit;
         }
 
         .categoria:hover,
         .categoria.activa {
-            background: var(--dorado);
-            color: black;
+            background: var(--verde-esmeralda);
+            border-color: var(--verde-claro);
+            color: #000;
         }
 
         /* Productos */
@@ -271,8 +276,8 @@
 
         .producto:hover {
             transform: translateY(-8px);
-            border-color: var(--dorado);
-            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.15);
+            border-color: var(--verde-claro);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
         }
 
         .producto img {
@@ -315,42 +320,15 @@
             color: var(--dorado-claro);
             border: 1px solid var(--dorado);
             cursor: pointer;
+            transition: 0.3s;
+            font-family: inherit;
+            font-style: inherit;
         }
 
         .acciones button:hover {
-            background: var(--dorado);
-            color: black;
-        }
-
-        /* ==============================
-           LLAMADO A LA ACCIÓN
-        ============================== */
-
-        .cta {
-            margin: 40px 5%;
-            padding: 60px;
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(0,0,0,.9),
-                    rgba(0,0,0,.6)
-                ),
-                url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80");
-
-            background-size: cover;
-            background-position: center;
-            border: 1px solid #4b3a13;
-            text-align: center;
-        }
-
-        .cta h2 {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .cta p {
-            color: #ddd;
-            margin-bottom: 25px;
+            background: var(--verde-esmeralda);
+            border-color: var(--verde-claro);
+            color: #000;
         }
 
         /* ==============================
@@ -389,11 +367,16 @@
             padding: 30px 20px;
             background: #171717;
             border: 1px solid #292929;
+            transition: 0.3s;
+        }
+
+        .beneficio:hover {
+            border-color: var(--verde-esmeralda);
         }
 
         .beneficio span {
             font-size: 35px;
-            color: var(--dorado);
+            color: var(--verde-claro);
         }
 
         .beneficio h3 {
@@ -436,19 +419,31 @@
             padding: 30px;
             background: #151515;
             border: 1px solid #292929;
+            transition: 0.3s;
+        }
+
+        .contacto-card:hover {
+            border-color: var(--verde-claro);
         }
 
         .contacto-card span {
             font-size: 30px;
-            color: var(--dorado);
+            color: var(--verde-claro);
         }
 
         .contacto-card h3 {
             margin: 15px 0 10px;
         }
 
-        .contacto-card p {
+        .contacto-card p,
+        .contacto-card a {
             color: #aaa;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contacto-card a:hover {
+            color: var(--verde-claro);
         }
 
         /* ==============================
@@ -470,7 +465,8 @@
 
         footer h2 {
             color: var(--dorado);
-            font-family: Georgia, serif;
+            font-family: serif;
+            font-style: italic;
             font-size: 40px;
         }
 
@@ -485,6 +481,11 @@
             font-size: 14px;
             line-height: 1.8;
             text-decoration: none;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--verde-claro);
         }
 
         .copyright {
@@ -514,7 +515,7 @@
 
         .modal-contenido {
             background: #151515;
-            border: 1px solid var(--dorado);
+            border: 1px solid var(--verde-claro);
             padding: 40px;
             width: 90%;
             max-width: 500px;
@@ -543,6 +544,8 @@
             background: #222;
             border: 1px solid #444;
             color: white;
+            font-family: inherit;
+            font-style: inherit;
         }
 
         .modal-contenido textarea {
@@ -554,7 +557,6 @@
            ESTILOS CARRITO DE COMPRAS Y WHATSAPP
         ============================== */
 
-        /* Botón de Carrito Flotante */
         .cart-icon-btn {
             position: fixed;
             bottom: 30px;
@@ -572,14 +574,23 @@
             z-index: 2000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             border: none;
+            transition: 0.3s;
+            font-family: inherit;
+            font-style: inherit;
+        }
+
+        .cart-icon-btn:hover {
+            background: var(--verde-claro);
+            color: black;
         }
 
         .cart-count {
             position: absolute;
             top: -5px;
             right: -5px;
-            background: red;
-            color: white;
+            background: var(--verde-esmeralda);
+            border: 1px solid var(--verde-claro);
+            color: black;
             font-size: 12px;
             font-weight: bold;
             width: 22px;
@@ -590,13 +601,12 @@
             justify-content: center;
         }
 
-        /* Botón Flotante de WhatsApp Directo */
         .whatsapp-btn {
             position: fixed;
             bottom: 30px;
             left: 30px;
-            background: #25d366;
-            color: white;
+            background: #ffffff;
+            color: black;
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -610,7 +620,6 @@
             text-decoration: none;
         }
 
-        /* Sidebar del Carrito */
         .cart-sidebar {
             position: fixed;
             top: 0;
@@ -618,7 +627,7 @@
             width: 380px;
             height: 100%;
             background: #111;
-            border-left: 1px solid var(--dorado);
+            border-left: 1px solid var(--verde-esmeralda);
             box-shadow: -5px 0 15px rgba(0,0,0,0.8);
             z-index: 3000;
             transition: 0.4s;
@@ -688,10 +697,12 @@
             height: 22px;
             cursor: pointer;
             font-weight: bold;
+            font-family: inherit;
+            font-style: inherit;
         }
 
         .btn-qty:hover {
-            background: var(--dorado);
+            background: var(--verde-esmeralda);
             color: black;
         }
 
@@ -711,14 +722,14 @@
         }
 
         .cart-total span:last-child {
-            color: var(--dorado-claro);
+            color: var(--verde-claro);
         }
 
         .btn-whatsapp-buy {
             width: 100%;
             padding: 14px;
-            background: #25d366;
-            color: white;
+            background: #ffffff;
+            color: black;
             border: none;
             font-weight: bold;
             font-size: 15px;
@@ -728,13 +739,14 @@
             justify-content: center;
             gap: 10px;
             transition: 0.3s;
+            font-family: inherit;
+            font-style: inherit;
         }
 
         .btn-whatsapp-buy:hover {
-            background: #1ebc57;
+            background: #e0e0e0;
         }
 
-        /* Overlay */
         .cart-overlay {
             display: none;
             position: fixed;
@@ -755,7 +767,6 @@
         ============================== */
 
         @media (max-width: 1000px) {
-
             nav ul {
                 display: none;
             }
@@ -771,7 +782,6 @@
         }
 
         @media (max-width: 600px) {
-
             .hero h1 {
                 font-size: 38px;
             }
@@ -786,10 +796,6 @@
             .contacto-grid,
             .footer-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .cta {
-                padding: 40px 20px;
             }
 
             .catalogo {
@@ -820,11 +826,6 @@
             <li><a href="#catalogo">CATÁLOGO</a></li>
             <li><a href="#nosotros">NOSOTROS</a></li>
             <li><a href="#contacto">CONTACTO</a></li>
-            <li>
-                <a href="#cotizacion" class="btn-nav">
-                    COTIZAR AHORA
-                </a>
-            </li>
         </ul>
     </nav>
 
@@ -1321,22 +1322,6 @@
 </section>
 
 
-<section class="cta" id="cotizacion">
-
-    <h2>¿TIENES UN PROYECTO EN MENTE?</h2>
-
-    <p>
-        Cuéntanos tu idea y trabajemos juntos
-        para convertirla en realidad.
-    </p>
-
-    <button class="btn" onclick="abrirModal('Solicitud de cotización')">
-        SOLICITAR COTIZACIÓN →
-    </button>
-
-</section>
-
-
 <section class="nosotros" id="nosotros">
 
     <div class="nosotros-contenido">
@@ -1344,12 +1329,12 @@
         <h2>¿POR QUÉ ELEGIRNOS?</h2>
 
         <p>
-            En SV Architecture Studio transformamos
-            ideas en espacios extraordinarios.
-            Nuestro compromiso es crear proyectos
-            que combinen estética, funcionalidad
-            y calidad, acompañando a nuestros clientes
-            durante cada etapa del proceso.
+            En MobiLab ofrecemos mobiliario diseñado para 
+            combinar funcionalidad, comodidad y estilo, creando 
+            espacios modernos y agradables. Seleccionamos productos
+            de calidad que se adaptan a las necesidades de cada
+            cliente, desde escritorios y sillas hasta mobiliario
+            para oficinas, estudios y espacios de trabajo.
         </p>
 
         <div class="beneficios">
@@ -1367,8 +1352,8 @@
                 <span>◇</span>
                 <h3>Calidad</h3>
                 <p>
-                    Cuidamos cada detalle
-                    de nuestros proyectos.
+                    Mobiliario resistente y funcional,
+                    seleccionado para acompañarte por mucho tiempo.
                 </p>
             </div>
 
@@ -1385,8 +1370,8 @@
                 <span>☆</span>
                 <h3>Innovación</h3>
                 <p>
-                    Buscamos nuevas formas
-                    de transformar espacios.
+                    Buscamos diseños modernos y
+                    soluciones creativas.
                 </p>
             </div>
 
@@ -1399,24 +1384,24 @@
 
 <section class="contacto" id="contacto">
 
-    <h2>HABLEMOS DE TU PROYECTO</h2>
+    <h2>EQUIPA TU ESPACIO CON MOBILAB</h2>
 
     <p>
-        Estamos listos para escuchar tus ideas.
+        Estamos aqui para ayudarte a encontrar el mobiliario ideal para tu espacio.
     </p>
 
     <div class="contacto-grid">
 
         <div class="contacto-card">
-            <span>☎</span>
-            <h3>Teléfono</h3>
-            <p>+504 0000-0000</p>
+            <span>fb</span>
+            <h3>Facebook</h3>
+            <p><a href="https://facebook.com" target="_blank">MobiLab Honduras</a></p>
         </div>
 
         <div class="contacto-card">
-            <span>✉</span>
-            <h3>Correo</h3>
-            <p>info@svarchitecture.com</p>
+            <span>ig</span>
+            <h3>Instagram</h3>
+            <p><a href="https://instagram.com" target="_blank">@mobilabhonduras</a></p>
         </div>
 
         <div class="contacto-card">
@@ -1436,15 +1421,15 @@
 
         <div>
 
-            <h2>SV</h2>
+            <h2>MobiLab</h2>
 
             <p>
-                ARCHITECTURE STUDIO
+                ARCHITECTURE-EDUCATION-INNOVATION
             </p>
 
             <p>
-                Imaginamos espacios,
-                Creamos Realidades.
+                Equipa tu Éxito,
+                Diseña tu Futuro.
             </p>
 
         </div>
@@ -1464,8 +1449,8 @@
 
             <h3>CONTACTO</h3>
 
-            <p>☎ +504 0000-0000</p>
-            <p>✉ info@svarchitecture.com</p>
+            <p><a href="https://facebook.com" target="_blank">Facebook: MobiLab Honduras</a></p>
+            <p><a href="https://instagram.com" target="_blank">Instagram: @mobilabhonduras</a></p>
             <p>⌖ San Pedro Sula, Honduras</p>
 
         </div>
@@ -1474,7 +1459,7 @@
 
     <div class="copyright">
 
-        © 2026 SV Architecture Studio.
+        © 2026 MobiLab.
         Todos los derechos reservados.
 
     </div>
@@ -1539,7 +1524,7 @@
     </div>
 
     <div class="cart-items" id="cartItems">
-        </div>
+    </div>
 
     <div class="cart-footer">
         <div class="cart-total">
